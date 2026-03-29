@@ -40,7 +40,7 @@ export default function PDFCompressor() {
       // We "process" it by re-saving it which sometimes cleans it up
       const compressedBytes = await pdfDoc.save({ useObjectStreams: true });
       
-      const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+      const blob = new Blob([compressedBytes as any], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       // Simulate slight reduction for the demo if size didn't change enough
