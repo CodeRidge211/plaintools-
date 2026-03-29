@@ -1,9 +1,10 @@
 'use client';
+import Link from 'next/link';
 
 const PDF_TOOLS = [
   { id: 'compress-pdf', title: 'Compress PDF', desc: 'Shrink your PDF size in-browser. Zero privacy risk.', icon: '🤏', route: '/pdf-tools/compress-pdf' },
   { id: 'merge-pdf', title: 'Merge PDF', desc: 'Combine multiple PDF files into one. Fast and secure.', icon: '🔗', route: '/pdf-tools/merge-pdf' },
-  { id: 'split-pdf', title: 'Split PDF', desc: 'Extract pages or split your PDF into parts. (Coming Soon)', icon: '✂️', route: '/pdf-tools/split-pdf', disabled: true },
+  { id: 'split-pdf', title: 'Split PDF', desc: 'Extract pages or split your PDF into parts.', icon: '✂️', route: '/pdf-tools/split-pdf' },
   { id: 'pdf-to-word', title: 'PDF to Word', desc: 'Convert your PDF to a Word doc. (Coming Soon)', icon: '📝', route: '/pdf-tools/pdf-to-word', disabled: true }
 ];
 
@@ -11,7 +12,7 @@ export default function PDFToolsHub() {
   return (
     <div className="category-hub container">
       <nav className="breadcrumb">
-        <a href="/">Home</a>
+        <Link href="/">Home</Link>
         <span className="separator">/</span>
         <span className="current">PDF Tools</span>
       </nav>
@@ -23,14 +24,14 @@ export default function PDFToolsHub() {
 
       <div className="tool-grid">
          {PDF_TOOLS.map(tool => (
-           <a key={tool.id} href={tool.disabled ? '#' : tool.route} className={`tool-card glass-hover ${tool.disabled ? 'disabled' : ''}`}>
+           <Link key={tool.id} href={tool.disabled ? '#' : tool.route} className={`tool-card glass-hover ${tool.disabled ? 'disabled' : ''}`}>
              <div className="icon">{tool.icon}</div>
              <div className="content">
                <h3>{tool.title} {tool.disabled && <small>(Soon)</small>}</h3>
                <p>{tool.desc}</p>
              </div>
              {!tool.disabled && <span className="arrow">→</span>}
-           </a>
+           </Link>
          ))}
       </div>
 
