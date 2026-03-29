@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import PlainEnglishToggle from "@/components/Layout/PlainEnglishToggle";
 import Link from "next/link";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "The Plain Tools | Free, No Signup Utility Hub",
@@ -20,6 +21,15 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-RDC1D2Y6WS" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RDC1D2Y6WS');
+          `}
+        </Script>
         <div className="layout-wrapper">
           <header className="site-header container">
             <Link href="/" className="logo">
